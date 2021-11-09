@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ClickApp</string>
+    <string name="checkInternet">Please Check Your Internet Connection</string>
+
+    <string name="network_failure">Sorry! Not connected to internet</string>
+    <string name="invalid_username_password">Invalid username or password</string>
+    <string name="add_video"><u>Add Video</u></string>
+    <string name="_97705_3114"><u>97705-3114</u></string>
+
+    <string name="facebook_app_id">235542678509501</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>

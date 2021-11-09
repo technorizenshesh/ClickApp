@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "820505075829",
+    "project_id": "clickapp-e6e39",
+    "storage_bucket": "clickapp-e6e39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820505075829:android:310433e2f0e12be346583c",
+        "android_client_info": {
+          "package_name": "com.my.clickapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820505075829-ljugsm9f84e4t3c3raadrv9rb37kdt5k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.clickapp",
+            "certificate_hash": "07601957272bd2cdcf2c4b144175d46a1c7cc098"
+          }
+        },
+        {
+          "client_id": "820505075829-jrgaa1gd241i4fl917292c7u37hbphrt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPKaImH2-na429iKThuD9pnxLQrMsdlHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820505075829-jrgaa1gd241i4fl917292c7u37hbphrt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
