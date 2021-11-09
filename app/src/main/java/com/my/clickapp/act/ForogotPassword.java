@@ -15,6 +15,7 @@ import com.my.clickapp.databinding.ActivityForogotPasswordBinding;
 public class ForogotPassword extends AppCompatActivity {
 
     ActivityForogotPasswordBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
