@@ -44,8 +44,9 @@ public class HomeActivity extends AppCompatActivity {
 
         binding.RRBookNow.setOnClickListener(view -> {
 
-            fragment = new HomeFragment();
-            loadFragment(fragment);
+            startActivity(new Intent(HomeActivity.this,ShopAnimationActivityShop.class));
+           /* fragment = new HomeFragment();
+            loadFragment(fragment);*/
 
         });
 

@@ -20,8 +20,12 @@ public class Addservices extends AppCompatActivity {
         binding.llenext.setOnClickListener(v -> {
 
             startActivity(new Intent(Addservices.this, HomeActivityProvider.class));
+        });
+
+        binding.RRServicesImg.setOnClickListener(v -> {
 
         });
+
 
     }
 }

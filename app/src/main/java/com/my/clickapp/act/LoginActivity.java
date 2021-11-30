@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleApiClient googleApiClient;
     private static final String TAG = "fireBaseToken";
 
-
     String Socilal_FirstName="";
     String Socilal_last_name="";
     String Socilal_email="";
@@ -96,6 +95,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     //FaceBook
     CallbackManager mCallbackManager;
     LoginButton loginButton;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,11 +210,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
              if(Login.equalsIgnoreCase("User"))
             {
-                Validation();
+                Validation("User");
 
             }else
             {
-                startActivity(new Intent(LoginActivity.this, HomeActivityProvider.class));
+                Validation("Provider");
+               // startActivity(new Intent(LoginActivity.this, HomeActivityProvider.class));
 
             }
         });
@@ -329,7 +332,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         alertDialog.show();
     }
 
-    private void Validation() {
+    private void Validation(String Type) {
 
         Email = binding.edtEmail.getText().toString();
         Password =  binding.edtPassword.getText().toString();
@@ -344,7 +347,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         }else
         {
-            AlertDaliog();
+            if(Type.equalsIgnoreCase("Provider"))
+            {
+                if (sessionManager.isNetworkAvailable()) {
+
+                    binding.progressBar.setVisibility(View.VISIBLE);
+
+                    loginMethod();
+
+                }else {
+                    Toast.makeText(LoginActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                }
+
+            }else {
+
+                AlertDaliog();
+            }
+
 
         }
     }
@@ -427,7 +446,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Preference.save(LoginActivity.this,Preference.KEY_User_email,finallyPr.result.email);
                         Preference.save(LoginActivity.this,Preference.KEY_USer_img,finallyPr.result.image);
                         Preference.save(LoginActivity.this,Preference.KEY_mobile,finallyPr.result.mobile);
-
 
                         //startActivity(new Intent(LoginActivity.this, MemberShipActivity.class));
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));

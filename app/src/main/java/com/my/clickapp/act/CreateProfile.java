@@ -27,6 +27,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.my.clickapp.GPSTracker;
 import com.my.clickapp.Preference;
 import com.my.clickapp.R;
+import com.my.clickapp.act.actProvider.AddmassageDetail;
 import com.my.clickapp.act.actProvider.HomeActivityProvider;
 import com.my.clickapp.databinding.ActivityCreateProfileBinding;
 import com.my.clickapp.model.LoginModel;
@@ -107,11 +108,12 @@ public class CreateProfile extends AppCompatActivity {
             {
                 Validation("User");
 
-                startActivity(new Intent(CreateProfile.this, MemberShipActivity.class));
-
             }else
             {
-                startActivity(new Intent(CreateProfile.this, HomeActivityProvider.class));
+                Validation("Provider");
+
+
+                //startActivity(new Intent(CreateProfile.this, AddmassageDetail.class));
             }
 
         });
@@ -244,17 +246,28 @@ public class CreateProfile extends AppCompatActivity {
 
         }else
         {
+            if(Type.equalsIgnoreCase("User"))
+            {
 
-            if (sessionManager.isNetworkAvailable()) {
+                if (sessionManager.isNetworkAvailable()) {
 
-                binding.progressBar.setVisibility(View.VISIBLE);
+                    binding.progressBar.setVisibility(View.VISIBLE);
 
-                ApISignUpMehod(Type);
+                    ApISignUpMehod(Type);
 
-            }else {
-                Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                }
+
+            }else
+            {
+                Intent intent1=new Intent(CreateProfile.this,AddmassageDetail.class);
+                intent1.putExtra("Name",Name);
+                intent1.putExtra("Email",Email);
+                intent1.putExtra("Mobile",Mobile);
+                intent1.putExtra("Password",Password);
+                startActivity(intent1);
             }
-
         }
     }
 
@@ -298,12 +311,13 @@ public class CreateProfile extends AppCompatActivity {
                     if(finallyPr.result.type.equalsIgnoreCase("User"))
                     {
                         Toast.makeText(CreateProfile.this, "" + finallyPr.message, Toast.LENGTH_SHORT).show();
+                        Preference.save(CreateProfile.this,Preference.KEY_USER_ID,finallyPr.result.id);
 
                         Preference.save(CreateProfile.this, Preference.KEY_User_name, finallyPr.result.getName());
                         Preference.save(CreateProfile.this, Preference.KEY_User_email, finallyPr.result.email);
                         Preference.save(CreateProfile.this, Preference.KEY_USer_img, finallyPr.result.image);
 
-                        startActivity(new Intent(CreateProfile.this, MemberShipActivity.class));
+                        startActivity(new Intent(CreateProfile.this, HomeActivity.class));
                         finish();
 
                     }

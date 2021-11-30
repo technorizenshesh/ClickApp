@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.notifications.NotificationsFragment">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/purple_200"
+            android:indeterminateTintMode="src_atop"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:background="@drawable/border_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp">
+
+                    <RelativeLayout
+                        android:layout_centerVertical="true"
+                        android:id="@+id/RR_tool"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        >
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:id="@+id/RRBack"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="match_parent"
+                            >
+
+                            <ImageView
+                                android:src="@drawable/back_new"
+                                android:layout_centerInParent="true"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp">
+
+                            </ImageView>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/search_home"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:inputType="text"
+                            android:textSize="@dimen/_16sdp"
+                            android:text="@string/reviews"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/WriteReview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="@string/wrte_a_review"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/recyReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:visibility="visible" />
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <TextView
+            android:id="@+id/txtEmty"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="@dimen/_14sdp"
+            android:text="No Data Found"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+</layout>

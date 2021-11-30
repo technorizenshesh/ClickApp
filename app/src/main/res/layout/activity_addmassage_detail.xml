@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:background="@mipmap/bg_one"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.notifications.NotificationsFragment">
+       >
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/purple_200"
+            android:indeterminateTintMode="src_atop"
+            android:padding="5dp"
+            android:visibility="gone" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -49,7 +61,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:inputType="text"
                         android:textSize="@dimen/_16sdp"
-                        android:text="Massage Details"
+                        android:text="Shop Details"
                         android:textStyle="bold"
                         android:textColor="@color/black" />
 
@@ -63,13 +75,76 @@
 
                 </View>
 
+                <RelativeLayout
+                    android:id="@+id/RRADDImg"
+                    android:background="@drawable/edt_bg"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardEquimentImg"
+                        android:visibility="gone"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgeUSer"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></ImageView>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <RelativeLayout
+                        android:id="@+id/RRAddEuimentImg"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+
+                        <ImageView
+                            android:id="@+id/img"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/plus"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            >
+
+                        </ImageView>
+
+                        <TextView
+                            android:layout_below="@+id/img"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload Shop Picture"
+                            android:textColor="@color/black1"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_14sdp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Massage Name"
+                    android:text="Shop Name"
                     android:textColor="@color/design_fab_shadow_start_color"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
@@ -78,57 +153,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_20sdp"
                     android:background="@drawable/edt_bg">
 
                     <EditText
+                        android:id="@+id/edtShopName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:hint=""
                         android:imeOptions="actionNext"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:maxLength="30"
                         android:padding="@dimen/_10sdp"
                         android:singleLine="true"
-                        android:textColor="#b0b0b0"
-                        android:textColorHint="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="normal" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:text="Massage Category"
-                    android:textColor="@color/design_fab_shadow_start_color"
-                    android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:background="@drawable/edt_bg">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:hint=""
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="30"
-                        android:padding="@dimen/_10sdp"
-                        android:singleLine="true"
-                        android:textColor="#b0b0b0"
-                        android:textColorHint="@color/black"
+                        android:textColor="@color/black1"
+                        android:textColorHint="#b0b0b0"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="normal" />
 
@@ -139,66 +180,132 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="Shop Category"
+                    android:textColor="@color/design_fab_shadow_start_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+
+                <RelativeLayout
+                    android:elevation="@dimen/_3sdp"
+                    android:id="@+id/RRSubCategory"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edt_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp">
+
+                    <Spinner
+                        android:background="@android:color/transparent"
+                        android:backgroundTint="@color/black1"
+                        android:visibility="visible"
+                        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/img_arcnty"
+                        android:id="@+id/spinnerCatgory"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_arcnty"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:src="@drawable/arw_btm"
+                        />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:text="Location"
                     android:textColor="@color/design_fab_shadow_start_color"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
+                    android:elevation="@dimen/_3sdp"
+                    android:id="@+id/RRDropUpAddress"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edt_bg"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:background="@drawable/edt_bg">
+                    >
 
-                    <EditText
-                        android:id="@+id/etEmail"
+
+                    <TextView
+                        android:id="@+id/tvPickUp"
+                        android:layout_toLeftOf="@+id/img2"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_centerVertical="true"
+                        android:gravity="left |center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null"
-                        android:hint=""
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="30"
-                        android:padding="@dimen/_10sdp"
-                        android:singleLine="true"
-                        android:textColor="#b0b0b0"
-                        android:textColorHint="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="normal" />
+                        android:textColor="@color/black1"
+                        android:textSize="@dimen/_12sdp"
+                        tools:ignore="RtlHardcoded" />
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:src="@drawable/arw_right_gry"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        >
+
+                    </ImageView>
+
 
                 </RelativeLayout>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:text="Add Image"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="Description"
                     android:textColor="@color/design_fab_shadow_start_color"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_20sdp"
                     android:background="@drawable/edt_bg">
 
-                   <ImageView
-                       android:src="@drawable/add"
-                       android:layout_centerInParent="true"
-                       android:layout_width="@dimen/_25sdp"
-                       android:layout_height="@dimen/_25sdp"
-                       >
-
-                   </ImageView>
+                    <EditText
+                        android:id="@+id/edtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black1"
+                        android:textColorHint="#b0b0b0"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="normal" />
 
                 </RelativeLayout>
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:gravity="center"
@@ -213,13 +320,11 @@
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginRight="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:text="Continew" />
+                    android:text="continue" />
 
             </LinearLayout>
 
-
         </ScrollView>
-
 
     </RelativeLayout>
 

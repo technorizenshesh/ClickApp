@@ -20,7 +20,8 @@
             android:indeterminateTint="@color/purple_200"
             android:indeterminateTintMode="src_atop"
             android:padding="5dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            />
 
         <RelativeLayout
             android:id="@+id/RRtoolbar"
@@ -142,6 +143,7 @@
                     </TextView>
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_marginRight="@dimen/_15sdp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
@@ -165,6 +167,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/RRSeeAll"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

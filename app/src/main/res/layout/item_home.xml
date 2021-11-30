@@ -32,7 +32,7 @@
                 android:layout_height = "@dimen/_50sdp">
 
                 <ImageView
-                    android:id="@+id/rounded_user_image"
+                    android:id="@+id/imgUser"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
                     android:scaleType="centerInside"
@@ -51,6 +51,7 @@
 
 
                 <TextView
+                    android:id="@+id/txtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="John Smith"
@@ -59,12 +60,13 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtServices"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="johny99"
+                    android:text=""
                     android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold" />
+                    />
 
             </LinearLayout>
 
@@ -78,6 +80,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -107,6 +110,7 @@
 
 
             <TextView
+                android:id="@+id/txtAccept"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/_10sdp"
@@ -122,6 +126,7 @@
                 tools:ignore="RtlCompat" />
 
             <TextView
+                android:id="@+id/txtReject"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"

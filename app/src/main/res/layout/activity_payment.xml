@@ -13,10 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp">
 
-            <RelativeLayout
+                <RelativeLayout
                 android:id="@+id/RRback"
                 android:layout_width="@dimen/_50sdp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
                 <ImageView
                     android:layout_centerInParent="true"
@@ -57,6 +58,7 @@
                 >
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:background="@color/white"
                     android:layout_margin="@dimen/_10sdp"
                     android:layout_width="match_parent"
@@ -122,6 +124,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:background="@color/white"
                     android:layout_margin="@dimen/_10sdp"
                     android:layout_width="match_parent"
@@ -187,6 +190,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/RRCredit"
                     android:background="@color/white"
                     android:layout_margin="@dimen/_10sdp"
                     android:layout_width="match_parent"
@@ -194,15 +198,14 @@
                     >
 
                     <RadioButton
+                        android:checked="true"
                         android:id="@+id/RadioOne1"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >
-
                     </RadioButton>
-
 
                     <LinearLayout
                         android:layout_toLeftOf="@+id/imgPay"
@@ -225,8 +228,6 @@
 
                         </TextView>
 
-
-
                         <TextView
                             android:layout_marginTop="@dimen/_5sdp"
                             android:textSize="@dimen/_14sdp"
@@ -235,7 +236,6 @@
                             android:layout_height="wrap_content">
 
                         </TextView>
-
 
                     </LinearLayout>
 
@@ -248,12 +248,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >
-
                     </ImageView>
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/RRDebit"
                     android:background="@color/white"
                     android:layout_margin="@dimen/_10sdp"
                     android:layout_width="match_parent"

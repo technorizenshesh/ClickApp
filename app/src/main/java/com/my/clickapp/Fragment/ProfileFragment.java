@@ -16,6 +16,7 @@ import com.my.clickapp.R;
 import com.my.clickapp.act.ChooseAdminUser;
 import com.my.clickapp.act.EditProfile;
 import com.my.clickapp.act.LoginActivity;
+import com.my.clickapp.act.MyBookingUser;
 import com.my.clickapp.act.ReviewActivity;
 import com.my.clickapp.databinding.FragmentProfileBinding;
 
@@ -52,7 +53,15 @@ public class ProfileFragment extends Fragment {
 
       });
 
+      binding.txtMyBooking.setOnClickListener(v ->{
+
+          startActivity(new Intent(getActivity(),  MyBookingUser.class));
+
+      });
+
       binding.btnLogout.setOnClickListener(v ->{
+
+          Preference.clearPreference(getActivity());
 
           startActivity(new Intent(getActivity(), ChooseAdminUser.class));
              getActivity().finish();

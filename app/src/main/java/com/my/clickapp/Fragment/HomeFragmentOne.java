@@ -20,14 +20,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.my.clickapp.GPSTracker;
 import com.my.clickapp.Preference;
 import com.my.clickapp.R;
+import com.my.clickapp.act.HomeActivity;
 import com.my.clickapp.act.HomeDetails;
 import com.my.clickapp.act.LoginActivity;
+import com.my.clickapp.act.MemberShipActivity;
+import com.my.clickapp.act.SeeAllShoplist;
+import com.my.clickapp.act.ShopAnimationActivityShop;
 import com.my.clickapp.adapter.HomeCategoryRecyclerViewAdapter;
 import com.my.clickapp.adapter.HomeSaloonRecyclerViewAdapter;
 import com.my.clickapp.databinding.FragmentHomeBinding;
 import com.my.clickapp.databinding.FragmentHomeOneBinding;
 import com.my.clickapp.model.CategoryModel;
 import com.my.clickapp.model.HomeModel;
+import com.my.clickapp.model.NearestShopModel;
 import com.my.clickapp.utils.RetrofitClients;
 import com.my.clickapp.utils.SessionManager;
 
@@ -47,10 +52,11 @@ public class HomeFragmentOne extends Fragment {
 
     HomeSaloonRecyclerViewAdapter mAdapter;
     HomeCategoryRecyclerViewAdapter mAdapterCategory;
-    private ArrayList<HomeModel> modelList = new ArrayList<>();
+    private ArrayList<NearestShopModel.Result> modelList = new ArrayList<>();
     private ArrayList<CategoryModel.Result> modelListCategory = new ArrayList<>();
     private SessionManager sessionManager;
     private GPSTracker gpsTracker;
+
     private double latitude;
     private double longitude;
 
@@ -79,10 +85,6 @@ public class HomeFragmentOne extends Fragment {
         }
 
 
-        setAdapter();
-
-       //setAdapterOne();
-
         if (sessionManager.isNetworkAvailable()) {
 
             binding.progressBar.setVisibility(View.VISIBLE);
@@ -93,19 +95,20 @@ public class HomeFragmentOne extends Fragment {
             Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
         }
 
+        binding.RRSeeAll.setOnClickListener(v -> {
+
+            startActivity(new Intent(getActivity(), ShopAnimationActivityShop.class));
+
+        });
+
         getCurrentLocation();
 
         return binding.getRoot();
     }
 
-    private void setAdapter() {
+    private void setAdapter(ArrayList<NearestShopModel.Result> modelList) {
 
-        this.modelList.add(new HomeModel("John Smith"));
-        this.modelList.add(new HomeModel("John Smith"));
-        this.modelList.add(new HomeModel("John Smith"));
-        this.modelList.add(new HomeModel("John Smith"));
-
-        mAdapter = new HomeSaloonRecyclerViewAdapter(getActivity(),modelList,HomeFragmentOne.this);
+        mAdapter = new HomeSaloonRecyclerViewAdapter(getActivity(),modelList);
         binding.recyclernearme.setHasFixedSize(true);
         // use a linear layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -114,16 +117,19 @@ public class HomeFragmentOne extends Fragment {
 
         mAdapter.SetOnItemClickListener(new HomeSaloonRecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position, HomeModel model) {
+            public void onItemClick(View view, int position, NearestShopModel.Result model) {
 
-                startActivity(new Intent(getActivity(), HomeDetails.class));
+                Preference.save(getActivity(),Preference.KEY_id,model.id);
+
+                startActivity(new Intent(getActivity(),HomeDetails.class));
+
             }
         });
     }
 
     private void setAdapterOne(ArrayList<CategoryModel.Result> modelListCategory) {
 
-        mAdapterCategory = new HomeCategoryRecyclerViewAdapter(getActivity(), this.modelListCategory,HomeFragmentOne.this);
+        mAdapterCategory = new HomeCategoryRecyclerViewAdapter(getActivity(),modelListCategory,HomeFragmentOne.this);
         binding.recyclerCategory.setHasFixedSize(true);
         // use a linear layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -134,8 +140,10 @@ public class HomeFragmentOne extends Fragment {
             @Override
             public void onItemClick(View view, int position, CategoryModel.Result model) {
 
-                fragment = new HomeFragment();
-                loadFragment(fragment);
+                Preference.save(getActivity(),Preference.KEY_category_id,model.getId());
+
+                startActivity(new Intent(getActivity(), ShopAnimationActivityShop.class));
+
 
             }
         });
@@ -150,47 +158,6 @@ public class HomeFragmentOne extends Fragment {
         transaction.commit();
     }
 
-    public void getCategory() {
-
-        Call<CategoryModel> call = RetrofitClients
-                .getInstance()
-                .getApi()
-                .Api_category_list();
-        call.enqueue(new Callback<CategoryModel>() {
-            @Override
-            public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
-                try {
-
-                    binding.progressBar.setVisibility(View.GONE);
-
-                    CategoryModel myclass = response.body();
-
-                    String status = String.valueOf(myclass.getStatus());
-                    String message = myclass.getMessage();
-
-                    if (status.equalsIgnoreCase("1")) {
-
-                        modelListCategory = (ArrayList<CategoryModel.Result>) myclass.getResult();
-
-                        setAdapterOne(modelListCategory);
-
-
-                    } else {
-                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CategoryModel> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     public void getCurrentLocation() {
         String loc = "";
@@ -201,6 +168,7 @@ public class HomeFragmentOne extends Fragment {
     }
 
     public String getAddress(Context context, double latitude, double longitute) {
+
         Log.e("latitude1====", latitude+"");
         Log.e("longitute1====", longitute+"");
 
@@ -229,5 +197,95 @@ public class HomeFragmentOne extends Fragment {
         return addressStreet;
     }
 
+    public void getCategory() {
+
+        Call<CategoryModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .Api_category_list();
+        call.enqueue(new Callback<CategoryModel>() {
+            @Override
+            public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
+                try {
+
+                    binding.progressBar.setVisibility(View.GONE);
+
+                    CategoryModel myclass = response.body();
+
+                    String status = String.valueOf(myclass.getStatus());
+                    String message = myclass.getMessage();
+
+                    if (status.equalsIgnoreCase("1")) {
+
+                        modelListCategory = (ArrayList<CategoryModel.Result>) myclass.getResult();
+
+                        setAdapterOne(modelListCategory);
+
+                        getNearesShop();
+
+                    } else {
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CategoryModel> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getNearesShop() {
+
+        String User_id = Preference.get(getActivity(),Preference.KEY_USER_ID);
+
+        String lat= String.valueOf(latitude);
+        String lon= String.valueOf(longitude);
+
+
+        Call<NearestShopModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .get_nearest_shop(User_id,lat,lon);
+        call.enqueue(new Callback<NearestShopModel>() {
+            @Override
+            public void onResponse(Call<NearestShopModel> call, Response<NearestShopModel> response) {
+                try {
+
+                    binding.progressBar.setVisibility(View.GONE);
+
+                    NearestShopModel myclass = response.body();
+
+                    String status = String.valueOf(myclass.getStatus());
+                    String message = myclass.getMessage();
+
+                    if (status.equalsIgnoreCase("1")) {
+
+                        modelList = (ArrayList<NearestShopModel.Result>) myclass.getResult();
+
+                        setAdapter(modelList);
+
+
+                    } else {
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NearestShopModel> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

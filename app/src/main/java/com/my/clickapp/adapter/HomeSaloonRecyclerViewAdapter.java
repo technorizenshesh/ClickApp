@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.my.clickapp.R;
 import com.my.clickapp.model.HomeModel;
+import com.my.clickapp.model.NearestShopModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,18 +26,15 @@ public class HomeSaloonRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     int pos = 0;
     private Context mContext;
-    private ArrayList<HomeModel> modelList;
+    private ArrayList<NearestShopModel.Result> modelList;
     private OnItemClickListener mItemClickListener;
-    private Fragment fragment;
-    boolean isLike=true;
 
-    public HomeSaloonRecyclerViewAdapter(Context context, ArrayList<HomeModel> modelList, Fragment fragment) {
+    public HomeSaloonRecyclerViewAdapter(Context context, ArrayList<NearestShopModel.Result> modelList) {
         this.mContext = context;
         this.modelList = modelList;
-        this.fragment = fragment;
     }
 
-    public void updateList(ArrayList<HomeModel> modelList) {
+    public void updateList(ArrayList<NearestShopModel.Result> modelList) {
         this.modelList = modelList;
         notifyDataSetChanged();
     }
@@ -50,12 +49,14 @@ public class HomeSaloonRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         //Here you can fill your row view
         if (holder instanceof ViewHolder) {
-            final HomeModel model = getItem(position);
+            final NearestShopModel.Result model = getItem(position);
             final ViewHolder genericViewHolder = (ViewHolder) holder;
 
 
-         //   String IsFav= model.getIsFav().toString();
+          genericViewHolder.txtMassaeg.setText(model.getShopName()+"");
+          genericViewHolder.search_home.setText(model.getShopAddress()+"");
 
+            Picasso.get().load(model.getShopImage()).into(genericViewHolder.massage);
 
         }
 
@@ -72,27 +73,30 @@ public class HomeSaloonRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         this.mItemClickListener = mItemClickListener;
     }
 
-    private HomeModel getItem(int position) {
+    private NearestShopModel.Result getItem(int position) {
         return modelList.get(position);
     }
 
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, int position, HomeModel model);
+        void onItemClick(View view, int position, NearestShopModel.Result model);
 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView img_room;
+        private TextView txtMassaeg;
+        private TextView search_home;
+        private ImageView massage;
 
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
-         //   this.img_room=itemView.findViewById(R.id.img_room);
-
+            this.txtMassaeg=itemView.findViewById(R.id.txtMassaeg);
+            this.search_home=itemView.findViewById(R.id.search_home);
+            this.massage=itemView.findViewById(R.id.massage);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

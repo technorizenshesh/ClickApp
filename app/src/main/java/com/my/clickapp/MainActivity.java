@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-
     private void handlerMethod() {
         new Handler().postDelayed(new Runnable() {
             public void run() {
@@ -86,14 +85,15 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE},
-                PERMISSION_ID
+          ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{
+                                Manifest.permission.ACCESS_COARSE_LOCATION,
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSION_ID
         );
     }
 }

@@ -2,15 +2,64 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <RelativeLayout
         android:background="@drawable/bg_one1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/purple_200"
+            android:indeterminateTintMode="src_atop"
+            android:padding="5dp"
+            android:visibility="gone"
+            />
+
+        <RelativeLayout
+            android:id="@+id/RRToolbaar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <RelativeLayout
+                android:id="@+id/RRback"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/back"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    ></ImageView>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/black1"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:text="Shop Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+        </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/RRToolbaar"
+            android:layout_above="@+id/RR_Book"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -22,85 +71,46 @@
                     android:layout_height="@dimen/_180sdp">
 
                     <ImageView
+                        android:id="@+id/shopImg"
                         android:scaleType="fitXY"
                         android:src="@mipmap/massage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         >
-
                     </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp">
-
-                        <RelativeLayout
-                            android:id="@+id/RRback"
-                            android:layout_width="@dimen/_50sdp"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_centerInParent="true"
-                                android:src="@mipmap/back"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                ></ImageView>
-
-                        </RelativeLayout>
-
-
-                        <TextView
-                            android:textSize="@dimen/_16sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"
-                            android:text="Details"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                        </TextView>
-
-
-                    </RelativeLayout>
-
-
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="-30dp"
-                    android:background="@drawable/button_white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:background="@mipmap/bg_one"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        >
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <TextView
+                            android:id="@+id/txtShopName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="AB Massage Theropists"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="@dimen/_20sdp"
                             android:textStyle="bold" />
 
                         <LinearLayout
-                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:visibility="gone">
 
                             <ImageView
-                                android:src="@mipmap/location"
                                 android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp">
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@mipmap/location">
 
                             </ImageView>
 
@@ -109,35 +119,33 @@
                                 android:layout_height="wrap_content"
                                 android:text="1st Block 1st cross,Rammurthy nagar"
                                 android:textColor="@color/mehroon"
-                                android:textSize="@dimen/_14sdp"
-                                />
+                                android:textSize="@dimen/_14sdp" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:text="4.2"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp"
-                                />
+                                android:textSize="@dimen/_16sdp" />
 
                             <RatingBar
-                                android:theme="@style/RatingBar"
-                                android:rating="5"
                                 android:id="@+id/indicator_ratingbar"
                                 style="?android:attr/ratingBarStyleSmall"
-                                android:layout_marginLeft="5dip"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical" />
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dip"
+                                android:rating="5"
+                                android:theme="@style/RatingBar" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -149,267 +157,222 @@
 
                         </LinearLayout>
 
+
                         <TextView
-                            android:layout_marginTop="@dimen/_20sdp"
+                            android:id="@+id/txtShopDesc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hey! My names jessica"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_16sdp"
-                            />
-
-
-                        <TextView
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="I am a specialist massage therapist with 4 year experience specialisting in thai massage,hare is some more text to fill up space about his blurb here. simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry standarddummy"
+                            android:text=""
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_16sdp"
-                            />
+                            android:textSize="@dimen/_16sdp" />
 
                         <TextView
-                            android:layout_marginTop="@dimen/_20sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
                             android:text="Type of services"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_16sdp"
                             android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:layout_margin="@dimen/_10sdp"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <RelativeLayout
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_marginLeft="@dimen/_20sdp"
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Body Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_margin="@dimen/_10sdp"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <RelativeLayout
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Hair Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Full Body Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_margin="@dimen/_10sdp"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <RelativeLayout
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Foot Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_marginLeft="@dimen/_20sdp"
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:background="@drawable/border_line"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
-
-                                <TextView
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Body Massage"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_marginRight="@dimen/_20sdp"
-                            android:layout_marginLeft="@dimen/_20sdp"
-                            android:scaleType="fitXY"
-                            android:layout_marginTop="20sp"
-                            android:src="@drawable/video_img"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyServices"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp" />
+
+                        <TextView
+                            android:id="@+id/txtEmty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:text="No Services Available"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyVideoList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            />
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             >
-                        </ImageView>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="@string/report"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:text="@string/like"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/_16sdp">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RRVideoImg"
+                                android:visibility="visible"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_100sdp">
+
+                                <ImageView
+                                    android:id="@+id/imgEVideo"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_vd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    >
+
+                                </ImageView>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/video_btn"
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    >
+
+                                </ImageView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="02:00"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:text="101 Views"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/_16sdp">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:visibility="gone">
 
                             <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_10sdp"
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
+                                android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_centerInParent="true"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
                                     android:layout_marginLeft="@dimen/_10sdp"
                                     android:inputType="text"
-                                    android:textSize="@dimen/_14sdp"
                                     android:text="2:00"
-                                    android:textColor="@color/mehroo" />
+                                    android:textColor="@color/mehroo"
+                                    android:textSize="@dimen/_14sdp" />
 
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_marginRight="@dimen/_15sdp"
-                                android:layout_alignParentRight="true"
-                                android:orientation="horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                >
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_centerInParent="true"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
                                     android:layout_marginLeft="@dimen/_10sdp"
                                     android:inputType="text"
-                                    android:textSize="@dimen/_14sdp"
                                     android:text="101 views"
-                                    android:textColor="@color/mehroo" />
+                                    android:textColor="@color/mehroo"
+                                    android:textSize="@dimen/_14sdp" />
 
                             </LinearLayout>
-
-                        </RelativeLayout>
-
-
-                        <RelativeLayout
-                            android:id="@+id/RR_Book"
-                            android:background="@drawable/border_line_one"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_42sdp"
-                            >
-
-                            <TextView
-                                android:paddingLeft="@dimen/_20sdp"
-                                android:layout_centerVertical="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Book Now  "
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp" />
-
-                            <ImageView
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:src="@mipmap/back_arw"
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                >
-
-                            </ImageView>
 
                         </RelativeLayout>
 
                     </LinearLayout>
-
 
                 </RelativeLayout>
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:id="@+id/RR_Book"
+            android:background="@drawable/border_line_one"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_42sdp"
+            >
+
+            <TextView
+                android:paddingLeft="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book Now  "
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+            <ImageView
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/back_arw"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                >
+
+            </ImageView>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

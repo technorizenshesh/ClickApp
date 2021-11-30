@@ -78,7 +78,36 @@
                     android:visibility="gone"
                     />
 
+
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:id="@+id/RRUserImg"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imgeUSer"
+                        android:layout_width="@dimen/_90sdp"
+                        android:layout_height="@dimen/_90sdp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/circl_bg" />
+
+                    <ImageView
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/img_edit"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        >
+
+                    </ImageView>
+
+                </RelativeLayout>
+
                 <androidx.cardview.widget.CardView
+                    android:visibility="gone"
                     app:cardElevation = "16dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="-50dp"
@@ -91,7 +120,6 @@
                     android:layout_height = "@dimen/_90sdp">
 
                     <ImageView
-                        android:id="@+id/imgeUSer"
                         android:layout_width="@dimen/_90sdp"
                         android:layout_height="@dimen/_90sdp"
                         android:scaleType="centerCrop"
@@ -225,9 +253,7 @@
 
             </LinearLayout>
 
-
         </ScrollView>
-
 
     </RelativeLayout>
 
